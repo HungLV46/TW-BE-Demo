@@ -1,0 +1,1413 @@
+{
+  "resource_version": 117,
+  "metadata": {
+    "version": 3,
+    "sources": [
+      {
+        "name": "default",
+        "kind": "postgres",
+        "tables": [
+          {
+            "table": {
+              "name": "collection_stats",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "collection",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "contract_address": "contract_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "collections",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "collectionl_stats_timeframe",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "contract_address": "contract_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "collection_stats",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "columns": [
+                    "contract_address",
+                    "duration_type",
+                    "id",
+                    "listed_nfts",
+                    "sales",
+                    "total_nfts",
+                    "total_owners",
+                    "floor_price",
+                    "prev_volume",
+                    "volume",
+                    "created_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                }
+              },
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "contract_address",
+                    "duration_type",
+                    "id",
+                    "listed_nfts",
+                    "sales",
+                    "total_nfts",
+                    "total_owners",
+                    "floor_price",
+                    "prev_volume",
+                    "volume",
+                    "created_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "limit": 100,
+                  "allow_aggregations": true
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "collection_verifications",
+              "schema": "public"
+            },
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "contract_address",
+                    "invite_link",
+                    "type",
+                    "id",
+                    "additional_info",
+                    "authorization_info",
+                    "created_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "collections",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "minter",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "minter_address": "aura_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "users",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_address": "aura_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "users",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "collection_stats",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "contract_address",
+                    "table": {
+                      "name": "collection_stats",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "collection_verifications",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "contract_address": "contract_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "collection_verifications",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "nft_histories",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "contract_address": "contract_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nft_histories",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "nfts",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "contract_address": "contract_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nfts",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "insert_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "check": {},
+                  "columns": [
+                    "banner",
+                    "contract_address",
+                    "feature",
+                    "logo",
+                    "minter_address",
+                    "name",
+                    "owner_address",
+                    "slug",
+                    "social_link_telegram",
+                    "social_link_twitter",
+                    "symbol",
+                    "type",
+                    "website",
+                    "id",
+                    "standard_contract_id",
+                    "description",
+                    "metadata",
+                    "banned_at",
+                    "created_at",
+                    "deleted_at",
+                    "updated_at"
+                  ]
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "columns": [
+                    "banner",
+                    "contract_address",
+                    "feature",
+                    "logo",
+                    "minter_address",
+                    "name",
+                    "owner_address",
+                    "slug",
+                    "social_link_telegram",
+                    "social_link_twitter",
+                    "symbol",
+                    "type",
+                    "website",
+                    "id",
+                    "standard_contract_id",
+                    "description",
+                    "metadata",
+                    "banned_at",
+                    "created_at",
+                    "deleted_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                }
+              },
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "banner",
+                    "contract_address",
+                    "created_at",
+                    "deleted_at",
+                    "description",
+                    "feature",
+                    "id",
+                    "logo",
+                    "metadata",
+                    "minter_address",
+                    "name",
+                    "owner_address",
+                    "social_link_telegram",
+                    "social_link_twitter",
+                    "standard_contract_id",
+                    "symbol",
+                    "type",
+                    "updated_at",
+                    "website"
+                  ],
+                  "filter": {
+                    "_and": [
+                      {
+                        "banned_at": {
+                          "_is_null": true
+                        }
+                      },
+                      {
+                        "owner": {
+                          "banned_at": {
+                            "_is_null": true
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "limit": 100,
+                  "allow_aggregations": true
+                }
+              }
+            ],
+            "update_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "columns": [
+                    "banner",
+                    "contract_address",
+                    "feature",
+                    "logo",
+                    "minter_address",
+                    "name",
+                    "owner_address",
+                    "slug",
+                    "social_link_telegram",
+                    "social_link_twitter",
+                    "symbol",
+                    "type",
+                    "website",
+                    "id",
+                    "standard_contract_id",
+                    "description",
+                    "metadata",
+                    "banned_at",
+                    "created_at",
+                    "deleted_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "check": {}
+                }
+              }
+            ],
+            "delete_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "filter": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "deployed_contracts",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "featured_collections",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "collection",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "collection_id": "id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "collections",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "insert_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "check": {},
+                  "columns": [
+                    "description",
+                    "image",
+                    "collection_id",
+                    "id",
+                    "priority",
+                    "created_at",
+                    "deleted_at",
+                    "schedule_at",
+                    "updated_at"
+                  ]
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "columns": [
+                    "description",
+                    "image",
+                    "collection_id",
+                    "id",
+                    "priority",
+                    "created_at",
+                    "deleted_at",
+                    "schedule_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                }
+              },
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "description",
+                    "image",
+                    "collection_id",
+                    "id",
+                    "priority",
+                    "created_at",
+                    "deleted_at",
+                    "schedule_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                }
+              }
+            ],
+            "update_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "columns": [
+                    "description",
+                    "image",
+                    "collection_id",
+                    "id",
+                    "priority",
+                    "created_at",
+                    "deleted_at",
+                    "schedule_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "check": {}
+                }
+              }
+            ],
+            "delete_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "filter": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "launchpads",
+              "schema": "public"
+            },
+            "array_relationships": [
+              {
+                "name": "mint_phases",
+                "using": {
+                  "foreign_key_constraint_on": {
+                    "column": "launchpad_id",
+                    "table": {
+                      "name": "mint_phases",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "insert_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "check": {},
+                  "columns": [
+                    "contract_address",
+                    "name",
+                    "status",
+                    "id",
+                    "standard_contract_id",
+                    "project_information",
+                    "created_at",
+                    "updated_at"
+                  ]
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "columns": [
+                    "contract_address",
+                    "name",
+                    "status",
+                    "id",
+                    "standard_contract_id",
+                    "project_information",
+                    "created_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                }
+              },
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "id",
+                    "name",
+                    "status",
+                    "contract_address",
+                    "standard_contract_id",
+                    "project_information",
+                    "created_at",
+                    "updated_at"
+                  ],
+                  "filter": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "listings",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "nft",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "contract_address": "contract_address",
+                      "token_id": "token_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nfts",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "store",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "store_address": "contract_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "stores",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "auction_config",
+                    "buyer_address",
+                    "contract_address",
+                    "created_at",
+                    "deleted_at",
+                    "end_time",
+                    "id",
+                    "latest_price",
+                    "seller_address",
+                    "start_time",
+                    "status",
+                    "store_address",
+                    "token_id",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "limit": 100,
+                  "allow_aggregations": true
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "mint_phases",
+              "schema": "public"
+            },
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "id",
+                    "name",
+                    "type",
+                    "starts_at",
+                    "ends_at",
+                    "config",
+                    "launchpad_id",
+                    "created_at",
+                    "updated_at"
+                  ],
+                  "filter": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "nft_histories",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "collection",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "contract_address": "contract_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "collections",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "nft",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "contract_address": "contract_address",
+                      "token_id": "token_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nfts",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "contract_address",
+                    "from_address",
+                    "to_address",
+                    "token_id",
+                    "transaction_hash",
+                    "block_height",
+                    "id",
+                    "additional_information",
+                    "event",
+                    "price",
+                    "transaction_time"
+                  ],
+                  "filter": {},
+                  "limit": 100,
+                  "allow_aggregations": true
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "nfts",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "collection",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "contract_address": "contract_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "collections",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "listingInfo",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "contract_address": "contract_address",
+                      "token_id": "token_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "listings",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "offers",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "contract_address": "contract_address",
+                      "token_id": "token_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "offers",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_address": "aura_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "users",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "histories",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "contract_address": "contract_address",
+                      "token_id": "token_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nft_histories",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "listings",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "token_id": "token_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "listings",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "columns": [
+                    "contract_address",
+                    "name",
+                    "owner_address",
+                    "token_id",
+                    "id",
+                    "metadata",
+                    "banned_at",
+                    "created_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                }
+              },
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "contract_address",
+                    "created_at",
+                    "id",
+                    "metadata",
+                    "name",
+                    "owner_address",
+                    "sync_tx_id",
+                    "token_id",
+                    "updated_at"
+                  ],
+                  "filter": {
+                    "_and": [
+                      {
+                        "banned_at": {
+                          "_is_null": true
+                        }
+                      },
+                      {
+                        "collection": {
+                          "banned_at": {
+                            "_is_null": true
+                          }
+                        }
+                      },
+                      {
+                        "owner": {
+                          "banned_at": {
+                            "_is_null": true
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "limit": 100,
+                  "allow_aggregations": true
+                }
+              }
+            ],
+            "update_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "columns": [
+                    "banned_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "check": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "offers",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "nft",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "contract_address": "contract_address",
+                      "token_id": "token_id"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nfts",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "offerer_address": "aura_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "users",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "contract_address",
+                    "offerer_address",
+                    "status",
+                    "store_address",
+                    "token_id",
+                    "id",
+                    "price",
+                    "created_at",
+                    "end_time",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "standard_contracts",
+              "schema": "public"
+            },
+            "select_permissions": [
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "description",
+                    "name",
+                    "code_id",
+                    "id",
+                    "status",
+                    "created_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "stores",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "owner",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_address": "aura_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "users",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "nfts",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "owner_address": "owner_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nfts",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "columns": [
+                    "contract_address",
+                    "description",
+                    "owner_address",
+                    "subdomain",
+                    "title",
+                    "id",
+                    "standard_contract_id",
+                    "extra_information",
+                    "status",
+                    "banned_at",
+                    "created_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true
+                }
+              },
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "banned_at",
+                    "contract_address",
+                    "created_at",
+                    "description",
+                    "extra_information",
+                    "id",
+                    "owner_address",
+                    "standard_contract_id",
+                    "status",
+                    "subdomain",
+                    "title",
+                    "updated_at"
+                  ],
+                  "filter": {
+                    "_and": [
+                      {
+                        "banned_at": {
+                          "_is_null": true
+                        }
+                      },
+                      {
+                        "owner": {
+                          "banned_at": {
+                            "_is_null": true
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "limit": 100,
+                  "allow_aggregations": true
+                }
+              }
+            ],
+            "update_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "columns": [
+                    "banned_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "check": {}
+                }
+              }
+            ]
+          },
+          {
+            "table": {
+              "name": "sync_informations",
+              "schema": "public"
+            }
+          },
+          {
+            "table": {
+              "name": "users",
+              "schema": "public"
+            },
+            "object_relationships": [
+              {
+                "name": "store",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "aura_address": "owner_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "stores",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "array_relationships": [
+              {
+                "name": "minter_collections",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "aura_address": "minter_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "collections",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "nfts",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "aura_address": "owner_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "nfts",
+                      "schema": "public"
+                    }
+                  }
+                }
+              },
+              {
+                "name": "owner_collections",
+                "using": {
+                  "manual_configuration": {
+                    "column_mapping": {
+                      "aura_address": "owner_address"
+                    },
+                    "insertion_order": null,
+                    "remote_table": {
+                      "name": "collections",
+                      "schema": "public"
+                    }
+                  }
+                }
+              }
+            ],
+            "select_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "columns": [
+                    "aura_address",
+                    "avatar",
+                    "banned_at",
+                    "created_at",
+                    "deleted_at",
+                    "id",
+                    "name",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "allow_aggregations": true,
+                  "query_root_fields": [
+                    "select_aggregate",
+                    "select",
+                    "select_by_pk"
+                  ],
+                  "subscription_root_fields": [
+                    "select_aggregate",
+                    "select",
+                    "select_by_pk"
+                  ]
+                }
+              },
+              {
+                "role": "public",
+                "permission": {
+                  "columns": [
+                    "aura_address",
+                    "avatar",
+                    "cover_picture",
+                    "created_at",
+                    "deleted_at",
+                    "id",
+                    "name",
+                    "updated_at"
+                  ],
+                  "filter": {
+                    "_and": [
+                      {
+                        "banned_at": {
+                          "_is_null": true
+                        }
+                      }
+                    ]
+                  },
+                  "limit": 100,
+                  "allow_aggregations": true
+                }
+              }
+            ],
+            "update_permissions": [
+              {
+                "role": "ADMIN",
+                "permission": {
+                  "columns": [
+                    "banned_at",
+                    "updated_at"
+                  ],
+                  "filter": {},
+                  "check": {}
+                }
+              }
+            ]
+          }
+        ],
+        "configuration": {
+          "connection_info": {
+            "database_url": {
+              "from_env": "HASURA_GRAPHQL_DATABASE_URL"
+            },
+            "isolation_level": "read-committed",
+            "pool_settings": {
+              "connection_lifetime": 600,
+              "idle_timeout": 180,
+              "max_connections": 50,
+              "retries": 1
+            },
+            "use_prepared_statements": true
+          }
+        }
+      }
+    ],
+    "query_collections": [
+      {
+        "name": "allowed-queries",
+        "definition": {
+          "queries": [
+            {
+              "name": "nftList",
+              "query": "      query nftList($contractAddress: String = \"\", $offset: Int = 10, $limit: Int = 10, $searchText: String = \"\", $sortValue: order_by = asc) {\n        nfts(where: {contract_address: {_eq: $contractAddress}, name: {_ilike: $searchText}}, order_by: {created_at: $sortValue}, limit: $limit, offset: $offset) {\n          contract_address\n          created_at\n          id\n          metadata\n          name\n          owner_address\n          token_id\n          updated_at\n          listingInfo {\n            auction_config\n            buyer_address\n            contract_address\n            created_at\n            deleted_at\n            id\n            latest_price\n            seller_address\n            status\n          }\n        }\n        nfts_aggregate {\n          aggregate {\n            count\n          }\n        }\n      }"
+            },
+            {
+              "name": "storeNftDetail",
+              "query": "    query storeNftDetail($tokenId: String = \"\", $contractAddress: String = \"\") {\n      nfts(where: {token_id: {_eq: $tokenId}, _and: {contract_address: {_eq: $contractAddress}}}) {\n        contract_address\n        created_at\n        id\n        metadata\n        name\n        owner_address\n        token_id\n        collection {\n          name\n          contract_address\n          minter_address\n          minter {\n            aura_address\n            avatar\n            name\n          }\n        }\n        histories {\n          transaction_hash\n          transaction_time\n          to_address\n          price\n          from_address\n          event\n        }\n        owner {\n          aura_address\n          avatar\n          name\n        }\n      }\n    }"
+            },
+            {
+              "name": "storeListNftsByOwner",
+              "query": "query storeListNftsByOwner($_owner_address: String = \"\", $limit: Int = 10, $offset: Int = 0) {\r\n\r\n      nfts(where: {owner_address: {_eq: $_owner_address}}, limit: $limit, offset: $offset, order_by: {updated_at: desc}) {\r\n\r\n        id\r\n\r\n        metadata\r\n\r\n        name\r\n\r\n        contract_address\r\n\r\n        created_at\r\n\r\n        token_id\r\n\r\n        listingInfo {\r\n\r\n          auction_config\r\n\r\n          buyer_address\r\n\r\n          contract_address\r\n\r\n          created_at\r\n\r\n          deleted_at\r\n\r\n          id\r\n\r\n          latest_price\r\n\r\n          seller_address\r\n\r\n          status\r\n\r\n        }\r\n\r\n        owner {\r\n\r\n          aura_address\r\n\r\n          avatar\r\n\r\n          name\r\n\r\n        }\r\n\r\n        owner_address\r\n\r\n      }\r\n\r\n      nfts_aggregate(where: {owner_address: {_eq: $_owner_address}}) {\r\n\r\n        aggregate {\r\n\r\n          count\r\n\r\n        }\r\n\r\n      }\r\n\r\n    }\r\n\r\n"
+            },
+            {
+              "name": "collectionListWithType",
+              "query": "query collectionListWithType($offset: Int = 0, $limit: Int = 10, $searchText: String = \"\", $type: String = \"\") {\r\n\r\n      collections(where: {_and: [\r\n\r\n        {_or: [{name: {_ilike: $searchText}}, {symbol: {_ilike: $searchText}}]},\r\n\r\n        {type: {_ilike: $type}}\r\n\r\n      ], logo: {_is_null: false}, feature: {_is_null: false}, banner: {_is_null: false}}, limit: $limit, offset: $offset, order_by: {created_at: desc}) {\r\n\r\n        banner\r\n\r\n        contract_address\r\n\r\n        created_at\r\n\r\n        description\r\n\r\n        logo\r\n\r\n        name\r\n\r\n        symbol\r\n\r\n        type\r\n\r\n        feature\r\n\r\n      }\r\n\r\n      collections_aggregate(where: {_and: [\r\n\r\n        {_or: [{name: {_ilike: $searchText}}, {symbol: {_ilike: $searchText}}]},\r\n\r\n        {type: {_ilike: $type}}\r\n\r\n      ], logo: {_is_null: false}, feature: {_is_null: false}, banner: {_is_null: false}}) {\r\n\r\n        aggregate {\r\n\r\n          count\r\n\r\n        }\r\n\r\n      }\r\n\r\n    }"
+            },
+            {
+              "name": "collectionList",
+              "query": "query collectionList($offset: Int = 0, $limit: Int = 10, $searchText: String = \"\") {\r\n\r\n        collections(where: {_and: [\r\n\r\n          {_or: [{name: {_ilike: $searchText}}, {symbol: {_ilike: $searchText}}]}\r\n\r\n        ], logo: {_is_null: false}, feature: {_is_null: false}, banner: {_is_null: false}}, limit: $limit, offset: $offset, order_by: {created_at: desc}) {\r\n\r\n          banner\r\n\r\n          contract_address\r\n\r\n          created_at\r\n\r\n          description\r\n\r\n          logo\r\n\r\n          name\r\n\r\n          symbol\r\n\r\n          type\r\n\r\n          feature\r\n\r\n        }\r\n\r\n        collections_aggregate(where: {_and: [\r\n\r\n          {_or: [{name: {_ilike: $searchText}}, {symbol: {_ilike: $searchText}}]}\r\n\r\n        ], logo: {_is_null: false}, feature: {_is_null: false}, banner: {_is_null: false}}) {\r\n\r\n          aggregate {\r\n\r\n            count\r\n\r\n          }\r\n\r\n        }\r\n\r\n      }"
+            },
+            {
+              "name": "storeList",
+              "query": "  query storeList($limit: Int = 10, $offset: Int = 10, $searchText: String = \"\") {\r\n    stores(limit: $limit, offset: $offset, where: {title: {_ilike: $searchText}}) {\r\n      contract_address\r\n      created_at\r\n      description\r\n      extra_information\r\n      id\r\n      owner_address\r\n      standard_contract_id\r\n      status\r\n      subdomain\r\n      title\r\n      updated_at\r\n    }\r\n    stores_aggregate(where: {title: {_ilike: $searchText}}) {\r\n      aggregate {\r\n        count\r\n      }\r\n    }\r\n  }"
+            },
+            {
+              "name": "user",
+              "query": "    query user($address: String = \"\") {\r\n      users(where: {aura_address: {_eq: $address}}) {\r\n        aura_address\r\n        avatar\r\n        id\r\n        name\r\n        updated_at\r\n        created_at\r\n        deleted_at\r\n      }\r\n    }"
+            },
+            {
+              "name": "collectionDetailActivities",
+              "query": "query collectionDetailActivities($contractAddress: String = \"\", $offset: Int = 0, $limit: Int = 10, $regex: String = \"\") {\n      nft_histories(where: {contract_address: {_eq: $contractAddress}, event: {_regex: $regex}}, order_by: {transaction_time: desc}, limit: $limit, offset: $offset) {\n        transaction_hash\n        transaction_time\n        token_id\n        to_address\n        price\n        from_address\n        event\n        contract_address\n        nft {\n          name\n          metadata\n        }\n      }\n      nft_histories_aggregate(where: {contract_address: {_eq: $contractAddress}, event: {_regex: $regex}}) {\n        aggregate {\n          count\n        }\n      }\n    }"
+            },
+            {
+              "name": "nftDetailActivities",
+              "query": "    query nftDetailActivities($contractAddress: String = \"\", $tokenId: String = \"\", $offset: Int = 0, $limit: Int = 10, $regex: String = \"\") {\n      nft_histories(where: {token_id: {_eq: $tokenId}, contract_address: {_eq: $contractAddress}, event: {_regex: $regex}}, order_by: {transaction_time: desc}, limit: $limit, offset: $offset) {\n        transaction_hash\n        transaction_time\n        token_id\n        to_address\n        price\n        from_address\n        event\n        contract_address\n      }\n      nft_histories_aggregate(where: {token_id: {_eq: $tokenId}, contract_address: {_eq: $contractAddress}, event: {_regex: $regex}}) {\n        aggregate {\n          count\n        }\n      }\n    }"
+            },
+            {
+              "name": "nftListings",
+              "query": "query nftListings($_ilike: String, $ownerAddress: String, $_lte: numeric, $_gte: numeric, $_in: [String!], $latest_price: order_by, $created_at: order_by = desc, $limit: Int = 10, $offset: Int = 10, $store_address: String!, $collectionAddress: [String!] = \"\", $updated_at: order_by, $currentDate: timestamptz = \"\") {\r\n      listings(where: {start_time: {_lte: $currentDate}, nft: {name: {_ilike: $_ilike}, owner_address: {_eq: $ownerAddress}, collection: {contract_address: {_in: $collectionAddress}}}, latest_price: {_lte: $_lte, _gte: $_gte}, status: {_in: $_in}, store: {contract_address: {_eq: $store_address}}}, order_by: {latest_price: $latest_price, nft: {}, created_at: $created_at, updated_at: $updated_at}, limit: $limit, offset: $offset) {\r\n        id\r\n        auction_config\r\n        status\r\n        nft {\r\n          metadata\r\n          contract_address\r\n          token_id\r\n          collection {\r\n            contract_address\r\n            name\r\n          }\r\n        }\r\n        updated_at\r\n        created_at\r\n      }\r\n      listings_aggregate(where: {start_time: {_lte: $currentDate}, nft: {name: {_ilike: $_ilike}, owner_address: {_eq: $ownerAddress}, collection: {contract_address: {_in: $collectionAddress}}}, latest_price: {_lte: $_lte, _gte: $_gte}, status: {_in: $_in}, store: {contract_address: {_eq: $store_address}}}, order_by: {latest_price: $latest_price, nft: {}, created_at: $created_at}) {\r\n        aggregate {\r\n          count\r\n        }\r\n      }\r\n      collections(where: {nfts: {listingInfo: {store_address: {_eq: $store_address}}}}) {\r\n        name\r\n        contract_address\r\n      }\r\n    }"
+            },
+            {
+              "name": "collectionStatsByAllTimeForDashboard",
+              "query": "\r\n    query collectionStatsByAllTimeForDashboard($volume_order: order_by = desc) {\r\n    collection_stats(order_by: {volume: $volume_order}, where: {duration_type: {_eq: \"all\"}, collection: {logo: {_is_null: false}, feature: {_is_null: false}, banner: {_is_null: false}}}, limit: 10) {\r\n      contract_address\r\n      duration_type\r\n      floor_price\r\n      id\r\n      volume\r\n      collection {\r\n        logo\r\n        name\r\n        description\r\n        banner\r\n      }\r\n    }\r\n  }\r\n  "
+            },
+            {
+              "name": "IntrospectionQuery",
+              "query": "query IntrospectionQuery {\r\n  __schema {\r\n    queryType {\r\n      name\r\n      __typename\r\n    }\r\n    mutationType {\r\n      name\r\n      __typename\r\n    }\r\n    subscriptionType {\r\n      name\r\n      __typename\r\n    }\r\n    types {\r\n      ...FullType\r\n      __typename\r\n    }\r\n    directives {\r\n      name\r\n      description\r\n      locations\r\n      args {\r\n        ...InputValue\r\n        __typename\r\n      }\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n}\r\n\r\nfragment FullType on __Type {\r\n  kind\r\n  name\r\n  description\r\n  fields(includeDeprecated: true) {\r\n    name\r\n    description\r\n    args {\r\n      ...InputValue\r\n      __typename\r\n    }\r\n    type {\r\n      ...TypeRef\r\n      __typename\r\n    }\r\n    isDeprecated\r\n    deprecationReason\r\n    __typename\r\n  }\r\n  inputFields {\r\n    ...InputValue\r\n    __typename\r\n  }\r\n  interfaces {\r\n    ...TypeRef\r\n    __typename\r\n  }\r\n  enumValues(includeDeprecated: true) {\r\n    name\r\n    description\r\n    isDeprecated\r\n    deprecationReason\r\n    __typename\r\n  }\r\n  possibleTypes {\r\n    ...TypeRef\r\n    __typename\r\n  }\r\n  __typename\r\n}\r\n\r\nfragment InputValue on __InputValue {\r\n  name\r\n  description\r\n  type {\r\n    ...TypeRef\r\n    __typename\r\n  }\r\n  defaultValue\r\n  __typename\r\n}\r\n\r\nfragment TypeRef on __Type {\r\n  kind\r\n  name\r\n  ofType {\r\n    kind\r\n    name\r\n    ofType {\r\n      kind\r\n      name\r\n      ofType {\r\n        kind\r\n        name\r\n        ofType {\r\n          kind\r\n          name\r\n          ofType {\r\n            kind\r\n            name\r\n            ofType {\r\n              kind\r\n              name\r\n              ofType {\r\n                kind\r\n                name\r\n                __typename\r\n              }\r\n              __typename\r\n            }\r\n            __typename\r\n          }\r\n          __typename\r\n        }\r\n        __typename\r\n      }\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n  __typename\r\n}"
+            },
+            {
+              "name": "users",
+              "query": "query users($limit: Int, $offset: Int, $order_by: [users_order_by!]!, $where: users_bool_exp) {\r\n  items: users(limit: $limit, offset: $offset, order_by: $order_by, where: $where) {\r\n    aura_address\r\n    avatar\r\n    banned_at\r\n    created_at\r\n    deleted_at\r\n    id\r\n    name\r\n    updated_at\r\n    nfts_aggregate {\r\n      aggregate {\r\n        count\r\n        __typename\r\n      }\r\n      __typename\r\n    }\r\n    minter_collections_aggregate {\r\n      aggregate {\r\n        count\r\n        __typename\r\n      }\r\n      __typename\r\n    }\r\n    store {\r\n      subdomain\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n  total: users_aggregate(order_by: $order_by, where: $where) {\r\n    aggregate {\r\n      count\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n}"
+            },
+            {
+              "name": "stores",
+              "query": "query stores($limit: Int, $offset: Int, $order_by: [stores_order_by!]!, $where: stores_bool_exp) {\r\n  items: stores(\r\n    limit: $limit\r\n    offset: $offset\r\n    order_by: $order_by\r\n    where: $where\r\n  ) {\r\n    banned_at\r\n    contract_address\r\n    created_at\r\n    description\r\n    extra_information\r\n    id\r\n    owner_address\r\n    standard_contract_id\r\n    status\r\n    subdomain\r\n    title\r\n    updated_at\r\n    nfts_aggregate {\r\n      aggregate {\r\n        count\r\n        __typename\r\n      }\r\n      __typename\r\n    }\r\n    owner {\r\n      banned_at\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n  total: stores_aggregate(order_by: $order_by, where: $where) {\r\n    aggregate {\r\n      count\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n}"
+            },
+            {
+              "name": "collections",
+              "query": "query collections($limit: Int, $offset: Int, $order_by: [collections_order_by!]!, $where: collections_bool_exp) {\r\n  items: collections(\r\n    limit: $limit\r\n    offset: $offset\r\n    order_by: $order_by\r\n    where: $where\r\n  ) {\r\n    banned_at\r\n    banner\r\n    contract_address\r\n    created_at\r\n    deleted_at\r\n    description\r\n    feature\r\n    id\r\n    logo\r\n    metadata\r\n    minter_address\r\n    name\r\n    owner_address\r\n    slug\r\n    social_link_telegram\r\n    social_link_twitter\r\n    standard_contract_id\r\n    symbol\r\n    type\r\n    updated_at\r\n    website\r\n    collection_stats(where: {duration_type: {_eq: \"all\"}}) {\r\n      volume\r\n      total_nfts\r\n      total_owners\r\n      __typename\r\n    }\r\n    owner {\r\n      banned_at\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n  total: collections_aggregate(order_by: $order_by, where: $where) {\r\n    aggregate {\r\n      count\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n}"
+            },
+            {
+              "name": "nfts",
+              "query": "query nfts($limit: Int, $offset: Int, $order_by: [nfts_order_by!]!, $where: nfts_bool_exp) {\r\n  items: nfts(limit: $limit, offset: $offset, order_by: $order_by, where: $where) {\r\n    banned_at\r\n    contract_address\r\n    created_at\r\n    id\r\n    metadata\r\n    name\r\n    owner_address\r\n    token_id\r\n    updated_at\r\n    collection {\r\n      name\r\n      minter_address\r\n      banned_at\r\n      __typename\r\n    }\r\n    owner {\r\n      banned_at\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n  total: nfts_aggregate(order_by: $order_by, where: $where) {\r\n    aggregate {\r\n      count\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n}"
+            },
+            {
+              "name": "getTotalBannedCollections",
+              "query": "query getTotalBannedCollections {\r\n  total: collections_aggregate(where: {banned_at: {_is_null: false}}) {\r\n    aggregate {\r\n      count\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n}"
+            },
+            {
+              "name": "getTotalBannedStores",
+              "query": "query getTotalBannedStores {\r\n  total: stores_aggregate(where: {banned_at: {_is_null: false}}) {\r\n    aggregate {\r\n      count\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n}"
+            },
+            {
+              "name": "getTotalBannedNfts",
+              "query": "query getTotalBannedNfts {\r\n  total: nfts_aggregate(where: {banned_at: {_is_null: false}}) {\r\n    aggregate {\r\n      count\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n}"
+            },
+            {
+              "name": "getTotalBannedUsers",
+              "query": "query getTotalBannedUsers {\r\n  total: users_aggregate(where: {banned_at: {_is_null: false}}) {\r\n    aggregate {\r\n      count\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n}"
+            },
+            {
+              "name": "featured_collections",
+              "query": "query featured_collections($order_by: [featured_collections_order_by!]!, $where: featured_collections_bool_exp) {\r\n  items: featured_collections(order_by: $order_by, where: $where) {\r\n    collection_id\r\n    created_at\r\n    deleted_at\r\n    description\r\n    id\r\n    image\r\n    priority\r\n    schedule_at\r\n    updated_at\r\n    collection {\r\n      id\r\n      name\r\n      logo\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n  total: featured_collections_aggregate(order_by: $order_by, where: $where) {\r\n    aggregate {\r\n      count\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n}"
+            },
+            {
+              "name": "collection_stats",
+              "query": "query collection_stats($order_by: [collection_stats_order_by!]!, $where: collection_stats_bool_exp) {\r\n  items: collection_stats(order_by: $order_by, where: $where) {\r\n    contract_address\r\n    created_at\r\n    duration_type\r\n    floor_price\r\n    id\r\n    listed_nfts\r\n    prev_volume\r\n    sales\r\n    total_nfts\r\n    total_owners\r\n    updated_at\r\n    volume\r\n    collection {\r\n      id\r\n      name\r\n      logo\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n  total: collection_stats_aggregate(order_by: $order_by, where: $where) {\r\n    aggregate {\r\n      count\r\n      __typename\r\n    }\r\n    __typename\r\n  }\r\n}"
+            },
+            {
+              "name": "usersStores",
+              "query": "    query usersStores($address: String = \"\") {\n      users (where: {aura_address: {_eq: $address}}){\n        aura_address\n        avatar\n        id\n        name\n        updated_at\n        created_at\n        deleted_at\n        cover_picture\n      }\n      stores(where: {owner_address: {_eq: $address}}) {\n        id\n        contract_address\n        created_at\n        description\n        extra_information\n        owner_address\n        standard_contract_id\n        status\n        subdomain\n        title\n        updated_at\n      }\n    }"
+            },
+            {
+              "name": "nftDetail",
+              "query": "    query nftDetail($tokenId: String = \"\", $contractAddress: String = \"\") {\r\n      nfts(where: {token_id: {_eq: $tokenId}, _and: {contract_address: {_eq: $contractAddress}}}) {\r\n        contract_address\r\n        created_at\r\n        id\r\n        metadata\r\n        name\r\n        owner_address\r\n        token_id\r\n        collection {\r\n          name\r\n          contract_address\r\n          minter_address\r\n          minter {\r\n            aura_address\r\n            avatar\r\n            name\r\n          }\r\n        }\r\n        histories {\r\n          transaction_hash\r\n          transaction_time\r\n          to_address\r\n          price\r\n          from_address\r\n          event\r\n        }\r\n        owner {\r\n          aura_address\r\n          avatar\r\n          name\r\n        }\r\n      }\r\n    }"
+            },
+            {
+              "name": "activities",
+              "query": "\r\n    query activities($ownerAddress: String = \"\", $regex: String = \"\", $offset: Int = 0, $limit: Int = 10) {\r\n      nft_histories(where: {\r\n        _or: [\r\n          {from_address: {_eq: $ownerAddress}},\r\n          {to_address: {_eq: $ownerAddress}}\r\n        ],\r\n        _and: {event: {_regex: $regex}}\r\n        },\r\n        limit: $limit,\r\n        offset: $offset,\r\n        order_by: {transaction_time: desc})\r\n        {\r\n          contract_address\r\n          event\r\n          from_address\r\n          to_address\r\n          transaction_time\r\n          transaction_hash\r\n          price\r\n          token_id\r\n          nft {\r\n            name\r\n            metadata\r\n          }\r\n        }\r\n        nft_histories_aggregate(where: {\r\n          _or: [\r\n          {from_address: {_eq: $ownerAddress}},\r\n          {to_address: {_eq: $ownerAddress}}\r\n        ],\r\n        _and: {event: {_regex: $regex}}}) {\r\n          aggregate {\r\n            count\r\n          }\r\n        }\r\n      }\r\n    "
+            },
+            {
+              "name": "getStandardContractList",
+              "query": "\r\n      query getStandardContractList($limit: Int = 10, $offset: Int = 0, $active: String = \"active\") {\r\n        standard_contracts(limit: $limit, offset: $offset, where: {status: {_eq: $active}}) {\r\n          code_id\r\n          id\r\n          name\r\n          status\r\n        }\r\n        standard_contracts_aggregate(where: {status: {_eq: $active}}) {\r\n          aggregate {\r\n            count\r\n          }\r\n        }\r\n      }\r\n    "
+            },
+            {
+              "name": "getCollectionListByOwner",
+              "query": "\r\n    query getCollectionListByOwner($ownerAddress: String = \"\", $limit: Int = 10, $offset: Int = 0) {\r\n      collections(where: {owner_address: {_eq: $ownerAddress}}, order_by: {created_at: desc}, offset: $offset, limit: $limit) {\r\n        name\r\n        contract_address\r\n        banner\r\n        created_at\r\n        description\r\n        feature\r\n        id\r\n        logo\r\n        owner_address\r\n        type\r\n        updated_at\r\n      }\r\n      collections_aggregate(where: {owner_address: {_eq: $ownerAddress}}) {\r\n        aggregate {\r\n          count\r\n        }\r\n      }\r\n    }\r\n"
+            },
+            {
+              "name": "nftListByUserType",
+              "query": "\r\n    query nftListByUserType($ownerAddress: String = \"\", $minterAddress: String = \"\", $offset: Int = 10, $limit: Int = 10) {\r\n      nfts(where: {owner_address: {_eq: $ownerAddress}, collection: {minter_address: {_eq: $minterAddress}}}, order_by: {created_at: desc}, offset: $offset, limit: $limit) {\r\n        contract_address\r\n        created_at\r\n        id\r\n        metadata\r\n        name\r\n        owner_address\r\n        token_id\r\n        listingInfo {\r\n          auction_config\r\n          end_time\r\n          latest_price\r\n          status\r\n          start_time\r\n        }\r\n      }\r\n      nfts_aggregate(where: {owner_address: {_eq: $ownerAddress}, collection: {minter_address: {_eq: $minterAddress}}}) {\r\n        aggregate {\r\n          count\r\n        }\r\n      }\r\n    }"
+            },
+            {
+              "name": "queryOffersMade",
+              "query": "\r\n    query queryOffersMade($aura_address: String = \"\", $created_at: order_by = asc) {\r\n      offers(limit: 10, offset: 0, where: {owner: {aura_address: {_eq: $aura_address}}}) {\r\n        id\r\n        status\r\n        price\r\n        end_time\r\n        nft {\r\n          metadata\r\n          listingInfo {\r\n            auction_config\r\n          }\r\n          collection {\r\n            name\r\n          }\r\n          contract_address\r\n          token_id\r\n          offers {\r\n            store_address\r\n          }\r\n        }\r\n      }\r\n      offers_aggregate(where: {owner: {aura_address: {_eq: $aura_address}}}) {\r\n        aggregate {\r\n          count\r\n        }\r\n      }\r\n    }\r\n  "
+            },
+            {
+              "name": "nftListing",
+              "query": "\r\n    query nftListing($tokenId: String = \"\") {\r\n      listings(where: {nft: {token_id: {_eq: $tokenId}}}, order_by: {updated_at: asc}) {\r\n        auction_config\r\n        buyer_address\r\n        contract_address\r\n        created_at\r\n        seller_address\r\n        status\r\n        store_address\r\n        token_id\r\n        updated_at\r\n        latest_price\r\n      }\r\n    }\r\n  "
+            },
+            {
+              "name": "nftOfferByOfferer",
+              "query": "\r\n    query nftOfferByOfferer($token_id: String = \"\", $contract_address: String = \"\", $offerer_address: String = \"\") {\r\n      offers(where: {token_id: {_eq: $token_id}, contract_address: {_eq: $contract_address}, offerer_address: {_eq: $offerer_address}}, order_by: {created_at: asc}) {\r\n        contract_address\r\n        created_at\r\n        end_time\r\n        id\r\n        price\r\n        status\r\n        store_address\r\n        token_id\r\n        updated_at\r\n        offerer_address\r\n      }\r\n    }\r\n\r\n  "
+            },
+            {
+              "name": "nftOfferList",
+              "query": "\r\n    query nftOfferList($token_id: String = \"\", $contract_address: String = \"\") {\r\n      offers(where: {token_id: {_eq: $token_id}, contract_address: {_eq: $contract_address}}, order_by: {price: desc}) {\r\n        contract_address\r\n        created_at\r\n        end_time\r\n        id\r\n        price\r\n        status\r\n        store_address\r\n        token_id\r\n        updated_at\r\n        offerer_address\r\n        nft {\r\n          offers {\r\n            contract_address\r\n            store_address\r\n          }\r\n        }\r\n      }\r\n    }\r\n  "
+            },
+            {
+              "name": "fromCollection",
+              "query": "\r\n    query fromCollection($tokenId: String = \"\", $contractAddress: String = \"\") {\r\n      collections(where: {contract_address: {_eq: $contractAddress}}) {\r\n        nfts(limit: 5, order_by: {created_at: desc}, where: {token_id: {_neq: $tokenId}}) {\r\n          contract_address\r\n          id\r\n          metadata\r\n          token_id\r\n          listingInfo {\r\n            auction_config\r\n            end_time\r\n            latest_price\r\n            status\r\n            start_time\r\n          }\r\n          owner_address\r\n        }\r\n      }\r\n    }\r\n  "
+            },
+            {
+              "name": "queryOffersReceived",
+              "query": "query queryOffersReceived($owner_address: String = \"\", $created_at: order_by = asc, $_eq: String = \"\") {\r\n      offers(limit: 10, offset: 0, where: {nft: {owner_address: {_eq: $owner_address}}}) {\r\n        id\r\n        status\r\n        price\r\n        end_time\r\n        nft {\r\n          metadata\r\n          listingInfo {\r\n            auction_config\r\n          }\r\n          collection {\r\n            name\r\n          }\r\n          offers {\r\n            offerer_address\r\n          }\r\n          contract_address\r\n          token_id\r\n        }\r\n      }\r\n      offers_aggregate(where: {nft: {owner_address: {_eq: $owner_address}}}) {\r\n        aggregate {\r\n          count\r\n        }\r\n      }\r\n    }"
+            },
+            {
+              "name": "getCollectionStatsByType",
+              "query": "query getCollectionStatsByType($durationType: String = \"all\", $contractAddress: String = \"\") {\r\n      collection_stats(where: {duration_type: {_eq: $durationType}, contract_address: {_eq: $contractAddress}}) {\r\n        id\r\n        floor_price\r\n        duration_type\r\n        created_at\r\n        contract_address\r\n        listed_nfts\r\n        prev_volume\r\n        volume\r\n        updated_at\r\n        total_owners\r\n        total_nfts\r\n        sales\r\n      }\r\n    }"
+            },
+            {
+              "name": "collectionDetail",
+              "query": "\r\n      query collectionDetail($contractAddress: String = \"\") {\r\n        collections(where: {contract_address: {_eq: $contractAddress}}) {\r\n          banner\r\n          contract_address\r\n          created_at\r\n          description\r\n          feature\r\n          id\r\n          logo\r\n          metadata\r\n          minter {\r\n            aura_address\r\n            avatar\r\n            created_at\r\n            name\r\n          }\r\n          minter_address\r\n          name\r\n          nft_histories {\r\n            block_height\r\n            additional_information\r\n            contract_address\r\n            event\r\n            from_address\r\n            id\r\n            nft {\r\n              name\r\n              metadata\r\n            }\r\n            price\r\n            to_address\r\n            transaction_hash\r\n            transaction_time\r\n          }\r\n          owner_address\r\n          symbol\r\n          type\r\n          updated_at\r\n          social_link_telegram\r\n          social_link_twitter\r\n          website\r\n        }\r\n      }\r\n    "
+            },
+            {
+              "name": "collectionStatsByTimeframe",
+              "query": "\r\n  query collectionStatsByTimeframe($volume_order: order_by = desc, $duration_type: String!) {\r\n    collection_stats(order_by: {volume: $volume_order}, where: {duration_type: {_eq: \"all\"}}, limit: 100) {\r\n      collectionl_stats_timeframe(where: {duration_type: {_eq: $duration_type}}) {\r\n        duration_type\r\n        id\r\n        prev_volume\r\n        sales\r\n        volume\r\n      }\r\n      contract_address\r\n      duration_type\r\n      floor_price\r\n      id\r\n      total_nfts\r\n      total_owners\r\n      volume\r\n      collection {\r\n        logo\r\n        name\r\n      }\r\n    }\r\n  }\r\n"
+            },
+            {
+              "name": "featuredCollections",
+              "query": "\r\n    query featuredCollections {\r\n      featured_collections(order_by: {priority: asc}, where: {schedule_at: {_is_null: true}}) {\r\n        id\r\n        image\r\n        description\r\n        collection {\r\n          logo\r\n          name\r\n          contract_address\r\n        }\r\n      }\r\n    }\r\n  "
+            },
+            {
+              "name": "getStoreBySubdomain",
+              "query": "\r\n    query getStoreBySubdomain($subdomain: String = \"\") {\r\n      stores(where: {subdomain: {_eq: $subdomain}}) {\r\n        banned_at\r\n        contract_address\r\n        created_at\r\n        description\r\n        extra_information\r\n        id\r\n        title\r\n        subdomain\r\n        status\r\n      }\r\n    }\r\n  "
+            }
+          ]
+        }
+      }
+    ],
+    "allowlist": [
+      {
+        "collection": "allowed-queries",
+        "scope": {
+          "global": true
+        }
+      }
+    ]
+  }
+}

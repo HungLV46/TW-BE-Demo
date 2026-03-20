@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+	CREATE DATABASE twilight_test;
+	GRANT ALL PRIVILEGES ON DATABASE twilight_test TO "$POSTGRES_USER";
+	CREATE DATABASE hasura;
+	GRANT ALL PRIVILEGES ON DATABASE hasura TO "$POSTGRES_USER";
+EOSQL
